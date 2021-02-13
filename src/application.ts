@@ -8,7 +8,7 @@ import {
 } from '@loopback/rest-explorer';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
-import {UserComponent} from './components';
+import {AccountComponent, UserComponent} from './components';
 import {MySequence} from './sequence';
 
 export {ApplicationConfig};
@@ -33,6 +33,7 @@ export class TodoApplication extends BootMixin(
 
     // Components
     this.component(UserComponent);
+    this.component(AccountComponent);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here

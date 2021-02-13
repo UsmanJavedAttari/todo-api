@@ -27,4 +27,8 @@ export class User extends BaseModel {
     required: true,
   })
   Password: string;
+
+  constructor(data?: Partial<User>) {
+    super(data);
+  }
 }
