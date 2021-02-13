@@ -3,13 +3,13 @@ import {Entity, model, property} from '@loopback/repository';
 @model()
 export class ApiResponse<T> extends Entity {
   @property()
-  Data: T;
+  Data?: T;
 
   @property()
-  Message: string;
+  Message = '';
 
   @property()
-  Staus: boolean;
+  Status = true;
 
   constructor(data?: Partial<ApiResponse<T>>) {
     super(data);

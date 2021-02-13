@@ -1,4 +1,5 @@
 import {bind, BindingScope, service} from '@loopback/core';
+import {AnyObject} from '@loopback/repository';
 import {HttpErrors} from '@loopback/rest';
 import {compareSync, hashSync} from 'bcrypt';
 import {User} from '../../user/models';
@@ -34,6 +35,10 @@ export class AccountService {
 
     newUser.Password = encPass;
 
-    return this.userSrv.create(newUser);
+    const userCreated = await this.userSrv.create(newUser);
+
+    delete (userCreated as AnyObject).Password;
+
+    return userCreated;
   }
 }

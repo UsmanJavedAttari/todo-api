@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "todo",
+    "version": "0.0.1",
+    "description": "todo",
+    "contact": {}
+  },
+  "paths": {
+    "/account/login": {
+      "post": {
+        "x-controller-name": "AccountController",
+        "x-operation-name": "login",
+        "tags": [
+          "AccountController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return value of AccountController.login"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "operationId": "AccountController.login"
+      }
+    },
+    "/account/signup": {
+      "post": {
+        "x-controller-name": "AccountController",
+        "x-operation-name": "signup",
+        "tags": [
+          "AccountController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Return value of AccountController.signup"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Signup"
+              }
+            }
+          }
+        },
+        "operationId": "AccountController.signup"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Login": {
+        "title": "Login",
+        "type": "object",
+        "properties": {
+          "Email": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "required": [
+          "Email",
+          "Password"
+        ],
+        "additionalProperties": false
+      },
+      "Signup": {
+        "title": "Signup",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Name",
+          "Email",
+          "Password"
+        ],
+        "additionalProperties": false
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}
